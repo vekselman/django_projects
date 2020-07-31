@@ -1,1 +1,5 @@
 # For development environment
+-r _base.txt
+coverage
+django-debug-toolbar
+selenium
