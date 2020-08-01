@@ -1,6 +1,7 @@
 # _base.py for shared settings
 
 import os
+import sys
 import json
 from django.core.exceptions import ImproperlyConfigured
 
@@ -25,8 +26,11 @@ STATICFILES_DIRS =[
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-EXTERNALS_ROOT = os.path.join(BASE_DIR, "externals")
+EXTERNAL_BASE = os.path.join(BASE_DIR, "externals")
+EXTERNAL_LIBS_PATH = os.path.join(EXTERNAL_BASE, "libs")
+EXTERNAL_APPS_PATH = os.path.join(EXTERNAL_BASE, "apps")
 
+sys.path = ["", EXTERNAL_APPS_PATH, EXTERNAL_APPS_PATH] + sys.path
 
 with open(os.path.join(BASE_DIR, "secrets", 'secrets.json'), 'r') \
         as f:
