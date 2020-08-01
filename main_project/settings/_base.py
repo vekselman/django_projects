@@ -4,11 +4,15 @@ import os
 import sys
 import json
 from django.core.exceptions import ImproperlyConfigured
+from main_project.apps.core.versioning import get_git_changeset_timestamp
 
 BASE_DIR = os.path.dirname(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 )
 # BASE_DIR == C:\Users\<USER>\PycharmProjects\django_projects
+# In order to get current timestamp of git
+timestamp = get_git_changeset_timestamp(BASE_DIR)
+STATIC_URL = f'/static/{timestamp}/'
 
 TEMPLATES = [{
     "DIRS": [
